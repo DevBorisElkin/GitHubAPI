@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 // check out
 // https://docs.github.com/en/rest
@@ -15,11 +16,20 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private let githubRepository = GitHubRepository()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        githubRepository.getRepos()
+        githubRepository.getRepos().flatMap { repos -> Observable<[Branch]> in
+            //let randomNumber = Int.random(in: 0...1)
+            let randomNumber = 0
+            let repo = repos[randomNumber]
+            return self.githubRepository.getBranches(ownerName: repo.owner.login, repoName: repo.name)
+        }.bind(to: tableView.rx.items(cellIdentifier: "branchCell", cellType: BranchTableViewCell.self)){
+            index, branch, cell in
+            cell.branchNameLabel.text = branch.name
+        }.disposed(by: disposeBag)
         
     }
 
@@ -28,6 +38,7 @@ class ViewController: UIViewController {
 
 struct Repo: Decodable{
     let name: String
+    let owner : Owner
 }
 
 struct Owner: Decodable{
