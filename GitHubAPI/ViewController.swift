@@ -21,16 +21,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        githubRepository.getRepos().flatMap { repos -> Observable<[Branch]> in
-            //let randomNumber = Int.random(in: 0...1)
-            let randomNumber = 0
-            let repo = repos[randomNumber]
-            return self.githubRepository.getBranches(ownerName: repo.owner.login, repoName: repo.name)
-        }.bind(to: tableView.rx.items(cellIdentifier: "branchCell", cellType: BranchTableViewCell.self)){
-            index, branch, cell in
-            cell.branchNameLabel.text = branch.name
-        }.disposed(by: disposeBag)
+//        githubRepository.getRepos().flatMap { repos -> Observable<[Branch]> in
+//            //let randomNumber = Int.random(in: 0...1)
+//            let randomNumber = 0
+//            let repo = repos[randomNumber]
+//            return self.githubRepository.getBranches(ownerName: repo.owner.login, repoName: repo.name)
+//        }.bind(to: tableView.rx.items(cellIdentifier: "branchCell", cellType: BranchTableViewCell.self)){
+//            index, branch, cell in
+//            cell.branchNameLabel.text = branch.name
+//        }.disposed(by: disposeBag)
         
+        // fix with regular cell filling in
+        // https://www.youtube.com/watch?v=C36sb5sc6lE&ab_channel=iOSAcademy
     }
 
 
