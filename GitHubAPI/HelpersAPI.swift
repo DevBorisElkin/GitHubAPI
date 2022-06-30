@@ -11,21 +11,17 @@ public class HelpersAPI{
     
     public static func getRepoData(url: String){
         Task{
-            print("Trying to get data")
             var repo = try await loadRepo(from: URL(string: url)!)
-            print("RepositoryName(\(repo.name), RepositoryId(\(repo.id)")
-            print("Got result")
+            repo.printMainData()
         }
     }
     
     public static func loadRepo(from url: URL) async throws -> RepoSimplified {
             let (data, _) = try await URLSession.shared.data(from: url)
-            print("Got some response with data")
-            let decoder = JSONDecoder()
-            return try decoder.decode(RepoSimplified.self, from: data)
+            return try JSONDecoder().decode(RepoSimplified.self, from: data)
     }
     
-    public static func getData(from url:String){
+    public static func printRepositoryFromUrl(from url:String){
         var task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
             guard let data = data, error == nil else {
                 print("Couldn't get data from URL")
@@ -45,10 +41,7 @@ public class HelpersAPI{
                 return
             }
             
-            print("\(json.name)")
-            print("\(json.id)")
-            print("\(json.login)")
-            print("\(json.email)")
+            json.printMainData()
         }
         task.resume()
         
@@ -89,4 +82,11 @@ public struct RepoSimplified : Decodable{
     var following: Int
     var created_at: String
     var updated_at: String
+    
+    public func printMainData(){
+        print("\(name)")
+        print("\(id)")
+        print("\(login)")
+        print("\(email)")
+    }
 }

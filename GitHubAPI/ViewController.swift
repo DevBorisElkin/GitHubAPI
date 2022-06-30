@@ -21,8 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //HelpersAPI.getRepoData(url: "https://api.github.com/users/defunkt")
-        HelpersAPI.getData(from: "https://api.github.com/users/defunkt")
+        HelpersAPI.getRepoData(url: "https://api.github.com/users/defunkt")
+        //HelpersAPI.printRepositoryFromUrl(from: "https://api.github.com/users/defunkt")
         
 //        Task{
 //            print("Started task")
