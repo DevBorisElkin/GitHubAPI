@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 // check out
 // https://docs.github.com/en/rest
@@ -16,27 +14,29 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private let githubRepository = GitHubRepository()
-    private let disposeBag = DisposeBag()
+    
+    
+    var repos : Repo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        githubRepository.getRepos().flatMap { repos -> Observable<[Branch]> in
-//            //let randomNumber = Int.random(in: 0...1)
-//            let randomNumber = 0
-//            let repo = repos[randomNumber]
-//            return self.githubRepository.getBranches(ownerName: repo.owner.login, repoName: repo.name)
-//        }.bind(to: tableView.rx.items(cellIdentifier: "branchCell", cellType: BranchTableViewCell.self)){
-//            index, branch, cell in
-//            cell.branchNameLabel.text = branch.name
-//        }.disposed(by: disposeBag)
+        Task{
+            print("Started task")
+            repos = try await githubRepository.getRepos()
+            print("Owner:\(repos?.owner) | RepoName:\(repos?.name)")
+        }
+        
+        
+
         
         // fix with regular cell filling in
         // https://www.youtube.com/watch?v=C36sb5sc6lE&ab_channel=iOSAcademy
     }
 
-
 }
+
+
 
 struct Repo: Decodable{
     let name: String
@@ -55,31 +55,43 @@ class GitHubRepository{
     private let networkService = NetworkService()
     private let baseUrlString = "https://api.github.com"
     
-    func getRepos() -> Observable<[Repo]> {
-        return networkService.execute(url: URL(string: "\(baseUrlString)/repositories")!)
+    func getRepos() async throws -> Repo {
+        var result = try await networkService.loadRepos(from: URL(string: "\(baseUrlString)/repositories")!)
+        return result
     }
     
-    func getBranches(ownerName: String, repoName: String) -> Observable<[Branch]> {
-        return networkService.execute(url: URL(string: "\(baseUrlString)/repos/\(ownerName)/\(repoName)/branches")!)
-    }
+//    func getBranches(ownerName: String, repoName: String) -> Observable<[Branch]> {
+//        return networkService.execute(url: URL(string: "\(baseUrlString)/repos/\(ownerName)/\(repoName)/branches")!)
+//    }
 }
 
 class NetworkService{
-    func execute<T : Decodable>(url: URL) -> Observable<T> {
-        return Observable.create { observer in
-            let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-                guard let data = data, let decoded = try? JSONDecoder().decode(T.self, from: data) else { return }
-                
-                observer.onNext(decoded)
-                observer.onCompleted()
-            }
-            
-            task.resume()
-            return Disposables.create {
-                task.cancel()
-            }
-            
-        }
+
+    public func loadItems<T : Decodable>(from url: URL) async throws -> T {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            return try decoder.decode(T.self, from: data)
+    }
+    
+    public func loadRepos(from url: URL) async throws -> Repo {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            return try decoder.decode(Repo.self, from: data)
     }
 }
 
+
+/*
+ //extension ViewController : UITableViewDataSource{
+ //
+ //   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ //
+ //  }
+ //
+ //  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ //
+ // }
+ //
+ //
+ //}
+ */
