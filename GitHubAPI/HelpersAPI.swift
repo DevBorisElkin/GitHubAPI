@@ -47,6 +47,39 @@ public class HelpersAPI{
         
     }
     
+    public static func printReposFromUrl(from url:String){
+        var task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Couldn't get data from URL")
+                return
+            }
+            
+            var result:[String]?
+            
+            do{
+                result = try JSONDecoder().decode([String].self, from: data)
+            }catch{
+                print("Error decoding data: \(error)")
+            }
+
+            guard let json = result else{
+                print("Unknown error, returning")
+                return
+            }
+            
+            for item in json{
+//                item.printMainData()
+                print(item)
+            }
+        }
+        task.resume()
+        
+    }
+    
+}
+
+public struct RepoArray : Decodable{
+    var repos: [RepoSimplified]
 }
 
 public struct RepoSimplified : Decodable{
