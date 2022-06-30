@@ -21,11 +21,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task{
-            print("Started task")
-            repos = try await githubRepository.getRepos()
-            print("Owner:\(repos?.owner) | RepoName:\(repos?.name)")
-        }
+        //HelpersAPI.getRepoData(url: "https://api.github.com/users/defunkt")
+        HelpersAPI.getData(from: "https://api.github.com/users/defunkt")
+        
+//        Task{
+//            print("Started task")
+//            repos = try await githubRepository.getRepos()
+//            print("Owner:\(repos?.owner) | RepoName:\(repos?.name)")
+//        }
         
         
 

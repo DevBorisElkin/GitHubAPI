@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520B7A8B286E392A00B3AB7F /* HelpersAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520B7A8A286E392A00B3AB7F /* HelpersAPI.swift */; };
 		5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548D2867A99100FF3B3D /* AppDelegate.swift */; };
 		529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548F2867A99100FF3B3D /* SceneDelegate.swift */; };
 		529254922867A99100FF3B3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529254912867A99100FF3B3D /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		520B7A8A286E392A00B3AB7F /* HelpersAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersAPI.swift; sourceTree = "<group>"; };
 		5292548A2867A99100FF3B3D /* GitHubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292548D2867A99100FF3B3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5292548F2867A99100FF3B3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				529254982867A99600FF3B3D /* LaunchScreen.storyboard */,
 				5292549B2867A99600FF3B3D /* Info.plist */,
 				529254A12868FA8900FF3B3D /* BranchTableViewCell.swift */,
+				520B7A8A286E392A00B3AB7F /* HelpersAPI.swift */,
 			);
 			path = GitHubAPI;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				529254922867A99100FF3B3D /* ViewController.swift in Sources */,
 				529254A22868FA8900FF3B3D /* BranchTableViewCell.swift in Sources */,
+				520B7A8B286E392A00B3AB7F /* HelpersAPI.swift in Sources */,
 				5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */,
 				529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */,
 			);
