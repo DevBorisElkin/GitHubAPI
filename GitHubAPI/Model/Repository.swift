@@ -11,7 +11,7 @@ struct Repository: Decodable{
     var id: Int
     var name: String
     var owner: RepositoryOwner
-    //var description: String
+    var description: String?
     
     //var node_id: String
     //var full_name: String

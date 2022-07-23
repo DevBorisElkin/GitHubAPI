@@ -20,53 +20,56 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="215" id="cpd-D2-ewL" customClass="ReposTableViewCell" customModule="GitHubAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="215"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="239" id="cpd-D2-ewL" customClass="ReposTableViewCell" customModule="GitHubAPI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="239"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cpd-D2-ewL" id="7Dc-ry-z9B">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-Hp-fP3">
-                                                    <rect key="frame" x="20" y="12" width="60" height="21"/>
+                                                    <rect key="frame" x="20" y="25" width="60" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6t-li-306">
-                                                    <rect key="frame" x="20" y="41" width="131" height="21"/>
+                                                    <rect key="frame" x="20" y="54" width="131" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner of repo name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-if-io4">
-                                                    <rect key="frame" x="20" y="68" width="156" height="21"/>
+                                                    <rect key="frame" x="20" y="81" width="156" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description of repo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-60-AiD">
-                                                    <rect key="frame" x="20" y="95" width="374" height="87"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description of repo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-60-AiD">
+                                                    <rect key="frame" x="20" y="108" width="374" height="87"/>
+                                                    <color key="backgroundColor" red="0.4509539923" green="0.80796033140000001" blue="0.54617658449999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="87" id="nOc-98-j4d"/>
+                                                    </constraints>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="Tc6-if-io4" secondAttribute="trailing" id="9bu-zd-oIx"/>
-                                                <constraint firstItem="U6t-li-306" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="HIu-ld-jU8"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="Lid-au-YBH"/>
-                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="top" secondItem="7Dc-ry-z9B" secondAttribute="topMargin" constant="1" id="QcW-Ow-eIV"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="trailing" secondItem="7Dc-ry-z9B" secondAttribute="trailingMargin" id="UQG-EN-ZVs"/>
-                                                <constraint firstItem="U6t-li-306" firstAttribute="top" secondItem="TGn-Hp-fP3" secondAttribute="bottom" constant="8" symbolic="YES" id="a5C-h8-M8g"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Dhs-60-AiD" secondAttribute="bottom" constant="22" id="a6N-p5-HB3"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="U6t-li-306" secondAttribute="trailing" id="emW-gf-Lni"/>
-                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="TGn-Hp-fP3" secondAttribute="trailing" id="g7i-bM-5yq"/>
-                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="i0F-PN-Ggp"/>
-                                                <constraint firstItem="Tc6-if-io4" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="jqA-eY-IpV"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="top" secondItem="Tc6-if-io4" secondAttribute="bottom" constant="6" id="nn9-aW-TdO"/>
-                                                <constraint firstItem="Tc6-if-io4" firstAttribute="top" secondItem="U6t-li-306" secondAttribute="bottom" constant="6" id="pJ2-Pc-pLt"/>
+                                                <constraint firstItem="Tc6-if-io4" firstAttribute="top" secondItem="U6t-li-306" secondAttribute="bottom" constant="6" id="33S-Fp-6U5"/>
+                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="86h-cz-7Wo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TGn-Hp-fP3" secondAttribute="trailing" constant="314" id="9PC-CX-IlB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="U6t-li-306" secondAttribute="trailing" constant="243" id="DQV-aj-wIQ"/>
+                                                <constraint firstItem="U6t-li-306" firstAttribute="top" secondItem="TGn-Hp-fP3" secondAttribute="bottom" constant="8" symbolic="YES" id="FY1-DH-LmF"/>
+                                                <constraint firstItem="Tc6-if-io4" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="Rem-8E-26o"/>
+                                                <constraint firstItem="U6t-li-306" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="UAC-mK-Rfi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Tc6-if-io4" secondAttribute="trailing" constant="218" id="bsN-gX-Ydy"/>
+                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="cvJ-Qy-rRt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Dhs-60-AiD" secondAttribute="bottom" constant="33" id="dmI-H7-YLm"/>
+                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="top" secondItem="Tc6-if-io4" secondAttribute="bottom" constant="6" id="mSv-0s-p8s"/>
+                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="trailing" secondItem="7Dc-ry-z9B" secondAttribute="trailingMargin" id="uG9-sX-3Ne"/>
+                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="top" secondItem="7Dc-ry-z9B" secondAttribute="topMargin" constant="14" id="xh3-Ty-LEs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

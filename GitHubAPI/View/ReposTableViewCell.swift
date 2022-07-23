@@ -19,7 +19,10 @@ class ReposTableViewCell: UITableViewCell {
         repoId.text = "\(repository.id)"
         repoName.text = "\(repository.name)"
         ownerName.text = "\(repository.owner.login)"
-        //repoDescription.text = "\(repository.description)"
+        if let description = repository.description{
+            //print("repo \(repository.name) has description: \(description)")
+            repoDescription.text = "\(description)"
+        }
     }
     
     override func awakeFromNib() {

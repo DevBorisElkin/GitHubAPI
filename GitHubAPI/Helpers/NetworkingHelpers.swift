@@ -20,6 +20,19 @@ public class NetworkingHelpers{
         }
     }
     
+    public static func decodeDataDetailed<T: Decodable>(from url: String, type: T.Type, printJSON: Bool, completion: @escaping (T) -> ()){
+        
+        loadDataFromURL(from: url, printJSON: printJSON) { data in
+            do{
+                let result = try JSONDecoder().decode(type.self, from: data)
+                completion(result)
+            }catch{
+                print("\(#function) Couldn't decode data properly")
+                print(error)
+            }
+        }
+    }
+    
     public static func loadDataFromURL(from url: String, printJSON: Bool, completion: @escaping (Data) -> ()){
         
         var task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in

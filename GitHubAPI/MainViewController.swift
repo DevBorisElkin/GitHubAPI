@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     }
     
     func loadData(){
-        NetworkingHelpers.decodeData(from: "https://api.github.com/repositories", type: [Repository].self, printJSON: false) { [weak self] data in
+        NetworkingHelpers.decodeDataDetailed(from: "https://api.github.com/repositories", type: [Repository].self, printJSON: false) { [weak self] data in
             
             //print(data)
             
