@@ -27,7 +27,14 @@ public class HelpersAPI{
                 print("Couldn't get data from URL")
                 return
             }
+            print("__________")
             
+            var json = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let json = json{
+                print(json)
+            }
+            
+            print("__________")
             var result:RepoSimplified?
             
             do{
@@ -54,23 +61,34 @@ public class HelpersAPI{
                 return
             }
             
-            var result:[String]?
+            var json = try? JSONSerialization.jsonObject(with: data, options: [])
+            print(json!)
             
-            do{
-                result = try JSONDecoder().decode([String].self, from: data)
-            }catch{
-                print("Error decoding data: \(error)")
-            }
-
-            guard let json = result else{
-                print("Unknown error, returning")
+            var result: Repositories? = try? JSONDecoder().decode(Repositories.self, from: data)
+            
+            guard let result = result else{
+                print("Error decoding to Repositories type")
                 return
             }
-            
-            for item in json{
-//                item.printMainData()
-                print(item)
-            }
+            print(result)
+//            var result: RepoArray?
+//
+//            do{
+//                result = try JSONDecoder().decode(RepoArray.self, from: data)
+//            }catch{
+//                print("Error decoding data: \(error)")
+//            }
+//
+//            guard let json = result else{
+//                print("Unknown error, returning")
+//                return
+//            }
+//
+//            print(result)
+//            for item in json{
+////                item.printMainData()
+//                print(item)
+//            }
         }
         task.resume()
         
