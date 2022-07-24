@@ -10,22 +10,14 @@ import WebKit
 
 class RepoDetailsViewController: UIViewController {
     
+    @IBAction func shareButtonPressed(_ sender: Any) { shareSelectedRepository() }
+    
     var selectedRepository: Repository?
     let webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadWebView()
-    }
-    
-    func loadWebView(){
-        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
-            print("Something is wrong with selected repository or with url to that repository")
-            return
-        }
-        view.addSubview(webView)
-        webView.load(URLRequest(url: url))
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,7 +25,31 @@ class RepoDetailsViewController: UIViewController {
         webView.frame = view.bounds
     }
     
+    func loadWebView(){
+        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
+            print("Something is wrong with selected repository or with url to that repository")
+            return
+        }
+        
+        self.navigationItem.title = selectedRepository.name
+        
+        view.addSubview(webView)
+        webView.load(URLRequest(url: url))
+    }
+    
+    
+    
     public func setData(repository: Repository){
         selectedRepository = repository
+    }
+    
+    private func shareSelectedRepository(){
+        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
+            print("Something is wrong with selected repository or with url to that repository")
+            return
+        }
+        
+        let shareVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        present(shareVC, animated: true)
     }
 }

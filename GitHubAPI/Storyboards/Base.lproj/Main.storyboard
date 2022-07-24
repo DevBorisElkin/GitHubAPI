@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -105,7 +106,7 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="69.642857142857139"/>
         </scene>
-        <!--Repo Details View Controller-->
+        <!--Repo Name Here-->
         <scene sceneID="fGv-oU-XPW">
             <objects>
                 <viewController id="NIW-QI-7gS" customClass="RepoDetailsViewController" customModule="GitHubAPI" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +116,14 @@
                         <viewLayoutGuide key="safeArea" id="PQ1-Ta-bcK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="HtD-oN-tN4"/>
+                    <navigationItem key="navigationItem" title="Repo Name Here" id="HtD-oN-tN4">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bxx-fQ-NXK">
+                            <imageReference key="image" image="square.and.arrow.up.on.square" catalog="system" symbolScale="default"/>
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="NIW-QI-7gS" id="Aoa-yM-sIn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4O-RX-lFb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,6 +149,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
