@@ -18,6 +18,7 @@
 		52F84A0C288C35800061D223 /* RepoSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A0B288C35800061D223 /* RepoSimplified.swift */; };
 		52F84A0F288C37540061D223 /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A0E288C37540061D223 /* NetworkingHelpers.swift */; };
 		52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A14288C4EA10061D223 /* ReposTableViewCell.swift */; };
+		52F84A1A288D58400061D223 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A19288D58400061D223 /* RepoDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		52F84A0B288C35800061D223 /* RepoSimplified.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSimplified.swift; sourceTree = "<group>"; };
 		52F84A0E288C37540061D223 /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		52F84A14288C4EA10061D223 /* ReposTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewCell.swift; sourceTree = "<group>"; };
+		52F84A19288D58400061D223 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				52F849D1288BF96F0061D223 /* Model */,
 				52F84A13288C4E710061D223 /* View */,
 				529254912867A99100FF3B3D /* MainViewController.swift */,
+				52F84A17288D570C0061D223 /* Details */,
 				52F84A11288C4C8C0061D223 /* Storyboards */,
 				529254962867A99600FF3B3D /* Assets.xcassets */,
 				5292549B2867A99600FF3B3D /* Info.plist */,
@@ -120,6 +123,22 @@
 				52F84A14288C4EA10061D223 /* ReposTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		52F84A17288D570C0061D223 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				52F84A18288D572B0061D223 /* ViewController */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		52F84A18288D572B0061D223 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52F84A19288D58400061D223 /* RepoDetailsViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +219,7 @@
 				52F84A0F288C37540061D223 /* NetworkingHelpers.swift in Sources */,
 				5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */,
 				529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */,
+				52F84A1A288D58400061D223 /* RepoDetailsViewController.swift in Sources */,
 				52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

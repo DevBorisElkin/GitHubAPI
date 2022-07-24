@@ -15,7 +15,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var repos: [Repository]?
-
+    var selectedRow: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +30,13 @@ class MainViewController: UIViewController {
             
             self?.repos = data
             self?.tableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRepositoryDetails", let repos = self.repos, let selectedRow = selectedRow{
+            var detailViewController = segue.destination as! RepoDetailsViewController
+            detailViewController.setData(repository: repos[selectedRow])
         }
     }
 }
@@ -45,5 +53,10 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
             cell.setData(repository: repos[indexPath.row])
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedRow = indexPath.row
+        performSegue(withIdentifier: "showRepositoryDetails", sender: nil)
     }
 }

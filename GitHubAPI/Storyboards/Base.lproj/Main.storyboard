@@ -45,7 +45,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description of repo" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-60-AiD">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description of repo" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-60-AiD">
                                                     <rect key="frame" x="20" y="108" width="374" height="87"/>
                                                     <color key="backgroundColor" red="0.4509539923" green="0.80796033140000001" blue="0.54617658449999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -98,11 +98,47 @@
                     <navigationItem key="navigationItem" id="d6s-vz-7lS"/>
                     <connections>
                         <outlet property="tableView" destination="J5j-Mq-v0M" id="Zq3-vb-Leh"/>
+                        <segue destination="NIW-QI-7gS" kind="show" identifier="showRepositoryDetails" id="eq5-gs-60O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="69.642857142857139"/>
+        </scene>
+        <!--Repo Details View Controller-->
+        <scene sceneID="fGv-oU-XPW">
+            <objects>
+                <viewController id="NIW-QI-7gS" customClass="RepoDetailsViewController" customModule="GitHubAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XGB-ah-2jq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Selected Repo name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1rH-7C-CDk">
+                                <rect key="frame" x="91" y="195" width="232" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name...." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnJ-Am-4sF">
+                                <rect key="frame" x="91" y="226" width="232" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PQ1-Ta-bcK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HtD-oN-tN4"/>
+                    <connections>
+                        <outlet property="selectedRepoName" destination="FnJ-Am-4sF" id="DAk-dy-66u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4O-RX-lFb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1676.8115942028987" y="69.642857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kOJ-Ym-KcD">
