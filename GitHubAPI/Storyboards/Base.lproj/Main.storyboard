@@ -112,22 +112,10 @@
                     <view key="view" contentMode="scaleToFill" id="XGB-ah-2jq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="XYC-dE-rnJ">
-                                <rect key="frame" x="197" y="465" width="20" height="20"/>
-                            </activityIndicatorView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="PQ1-Ta-bcK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="XYC-dE-rnJ" firstAttribute="centerX" secondItem="PQ1-Ta-bcK" secondAttribute="centerX" id="7ES-VI-X2T"/>
-                            <constraint firstItem="XYC-dE-rnJ" firstAttribute="centerY" secondItem="PQ1-Ta-bcK" secondAttribute="centerY" id="cW5-Nj-wdj"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HtD-oN-tN4"/>
-                    <connections>
-                        <outlet property="activityIndicator" destination="XYC-dE-rnJ" id="hE5-0D-Zzj"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4O-RX-lFb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
