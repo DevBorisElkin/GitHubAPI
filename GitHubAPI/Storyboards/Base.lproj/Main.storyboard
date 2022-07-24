@@ -29,19 +29,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-Hp-fP3">
-                                                    <rect key="frame" x="20" y="25" width="60" height="21"/>
+                                                    <rect key="frame" x="20" y="25" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6t-li-306">
-                                                    <rect key="frame" x="20" y="54" width="131" height="21"/>
+                                                    <rect key="frame" x="20" y="54" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner of repo name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-if-io4">
-                                                    <rect key="frame" x="20" y="81" width="156" height="21"/>
+                                                    <rect key="frame" x="20" y="81" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -60,12 +60,12 @@
                                             <constraints>
                                                 <constraint firstItem="Tc6-if-io4" firstAttribute="top" secondItem="U6t-li-306" secondAttribute="bottom" constant="6" id="33S-Fp-6U5"/>
                                                 <constraint firstItem="TGn-Hp-fP3" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="86h-cz-7Wo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TGn-Hp-fP3" secondAttribute="trailing" constant="314" id="9PC-CX-IlB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="U6t-li-306" secondAttribute="trailing" constant="243" id="DQV-aj-wIQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TGn-Hp-fP3" secondAttribute="trailing" id="9PC-CX-IlB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="U6t-li-306" secondAttribute="trailing" id="DQV-aj-wIQ"/>
                                                 <constraint firstItem="U6t-li-306" firstAttribute="top" secondItem="TGn-Hp-fP3" secondAttribute="bottom" constant="8" symbolic="YES" id="FY1-DH-LmF"/>
                                                 <constraint firstItem="Tc6-if-io4" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="Rem-8E-26o"/>
                                                 <constraint firstItem="U6t-li-306" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="UAC-mK-Rfi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Tc6-if-io4" secondAttribute="trailing" constant="218" id="bsN-gX-Ydy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Tc6-if-io4" secondAttribute="trailing" id="bsN-gX-Ydy"/>
                                                 <constraint firstItem="Dhs-60-AiD" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="cvJ-Qy-rRt"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Dhs-60-AiD" secondAttribute="bottom" constant="33" id="dmI-H7-YLm"/>
                                                 <constraint firstItem="Dhs-60-AiD" firstAttribute="top" secondItem="Tc6-if-io4" secondAttribute="bottom" constant="6" id="mSv-0s-p8s"/>
