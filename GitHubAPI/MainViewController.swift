@@ -97,15 +97,35 @@ extension MainViewController : UIScrollViewDelegate{
         print("Load more repos data")
         fetchingData = true
         
-        NetworkingHelpers.decodeDataDetailed(from: githubReposPaginationLink + "\(lastRepoLoadedId)", type: [Repository].self, printJSON: false) { [weak self, lastRepoLoadedId] data in
-            
-            self?.repos?.append(contentsOf: data)
-            self?.tableView.reloadData()
-            
-            self?.lastRepoLoadedId = data.last?.id
-            self?.fetchingData = false
-            
-            print("Now total repos count: \(self?.repos?.count)")
+        self.tableView.tableFooterView = createSpinnerFooter()
+        
+        // this thing is only for delay TODO fix it
+        DispatchQueue.global(qos: .background).async {
+            sleep(1)
+            // TODO with that there's potentially a memory leak
+            NetworkingHelpers.decodeDataDetailed(from: self.githubReposPaginationLink + "\(lastRepoLoadedId)", type: [Repository].self, printJSON: false) { [weak self, lastRepoLoadedId] data in
+                
+                self?.tableView.tableFooterView = nil
+                
+                self?.repos?.append(contentsOf: data)
+                self?.tableView.reloadData()
+                
+                self?.lastRepoLoadedId = data.last?.id
+                self?.fetchingData = false
+                
+                print("Now total repos count: \(self?.repos?.count)")
+            }
         }
+    }
+    
+    private func createSpinnerFooter() -> UIView{
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        
+        let spinner = UIActivityIndicatorView()
+        spinner.center = footerView.center
+        footerView.addSubview(spinner)
+        
+        spinner.startAnimating()
+        return footerView
     }
 }
