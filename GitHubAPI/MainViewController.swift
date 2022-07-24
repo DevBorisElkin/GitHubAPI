@@ -27,16 +27,22 @@ class MainViewController: UIViewController {
     var fetchingData: Bool = true
     var lastRepoLoadedId: Int?
     
+    var refreshControl: UIRefreshControl?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         screenHeight = UIScreen.main.bounds.height
         //contentSizeSubtraction = screenHeight * (1 - screenHeightOffsetToPaginate)
         contentSizeSubtraction = view.frame.size.height + Double(100)
-        loadDataInitially()
+        
+        tableView.refreshControl = createRefreshControl()
+        
+        
+        loadDataInitially(completion: nil)
     }
     
-    func loadDataInitially(){
+    func loadDataInitially(completion: (() -> ())?){
         NetworkingHelpers.decodeDataDetailed(from: githubReposLink, type: [Repository].self, printJSON: false) { [weak self] data in
             
             self?.repos = data
@@ -45,6 +51,8 @@ class MainViewController: UIViewController {
             self?.lastRepoLoadedId = data.last?.id
             
             print("Number of repos: \(data.count)")
+            
+            completion?()
         }
     }
     
@@ -127,5 +135,20 @@ extension MainViewController : UIScrollViewDelegate{
         
         spinner.startAnimating()
         return footerView
+    }
+}
+// MARK: pull to refresh
+extension MainViewController{
+    
+    private func createRefreshControl() -> UIRefreshControl{
+        var refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(onCalledToRefresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }
+    
+    @objc private func onCalledToRefresh(sender: UIRefreshControl){
+        loadDataInitially {
+            sender.endRefreshing()
+        }
     }
 }
