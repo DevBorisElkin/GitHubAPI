@@ -12,11 +12,11 @@ struct Repository: Decodable{
     var name: String
     var owner: RepositoryOwner
     var description: String?
+    var html_url: String
     
     //var node_id: String
     //var full_name: String
     //var _private: Bool
-    //var html_url: String
     //var fork: Bool
     //var url: String
     //var forks_url: String

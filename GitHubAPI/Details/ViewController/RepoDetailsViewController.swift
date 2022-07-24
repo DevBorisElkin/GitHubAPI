@@ -6,17 +6,29 @@
 //
 
 import UIKit
+import WebKit
 
 class RepoDetailsViewController: UIViewController {
     
-    @IBOutlet weak var selectedRepoName: UILabel!
-    
     var selectedRepository: Repository?
+    let webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        selectedRepoName.text = selectedRepository?.name
+        view.addSubview(webView)
+        
+        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
+            print("Something is wrong with selected repository or with url to that repository")
+            return
+        }
+
+        webView.load(URLRequest(url: url))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        webView.frame = view.bounds
     }
     
     public func setData(repository: Repository){
