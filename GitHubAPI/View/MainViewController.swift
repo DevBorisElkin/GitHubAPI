@@ -14,41 +14,28 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var repos: [Repository]?
-    var selectedRow: Int?
+    var viewModel = ViewModel()
     
-    let githubReposLink = "https://api.github.com/repositories"
-    let githubReposPaginationLink = "https://api.github.com/repositories?since="
-    
-    var screenHeight: CGFloat!
-    let screenHeightOffsetToPaginate = 0.25 // e.g. 0.2 = 20% of screen swiped = load next page
     var contentSizeSubtraction: Double!
-    
-    var fetchingData: Bool = true
-    var lastRepoLoadedId: Int?
-    
-    var refreshControl: UIRefreshControl?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        screenHeight = UIScreen.main.bounds.height
-        //contentSizeSubtraction = screenHeight * (1 - screenHeightOffsetToPaginate)
         contentSizeSubtraction = view.frame.size.height + Double(100)
         
         tableView.refreshControl = createRefreshControl()
-        
         
         loadDataInitially(completion: nil)
     }
     
     func loadDataInitially(completion: (() -> ())?){
-        NetworkingHelpers.decodeDataDetailed(from: githubReposLink, type: [Repository].self, printJSON: false) { [weak self] data in
+        NetworkingHelpers.decodeDataDetailed(from: viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] data in
             
-            self?.repos = data
+            self?.viewModel.setRepositories(newRepos: data)
+
             self?.tableView.reloadData()
-            self?.fetchingData = false
-            self?.lastRepoLoadedId = data.last?.id
+            self?.viewModel.fetchingData = false
+            self?.viewModel.lastRepoLoadedId = data.last?.id ?? 0
             
             print("Number of repos: \(data.count)")
             
@@ -57,30 +44,30 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showRepositoryDetails", let repos = self.repos, let selectedRow = selectedRow{
-            var detailViewController = segue.destination as! RepoDetailsViewController
-            detailViewController.setData(repository: repos[selectedRow])
+        guard segue.identifier == viewModel.repoDetailsSegueIdentifier, let preparedViewModel = viewModel.getRepositoryDataForCelectedCell() else {
+           return
         }
+        
+        var detailViewController = segue.destination as! RepoDetailsViewController
+        detailViewController.setData(tableViewCellViewModel: preparedViewModel)
     }
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repos?.count ?? 0
+        return viewModel.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "repositoryCell") as! ReposTableViewCell
-        if let repos = repos{
-            cell.setData(repository: repos[indexPath.row])
-        }
+        var cell = tableView.dequeueReusableCell(withIdentifier: viewModel.repoCellIdentifier) as! ReposTableViewCell
+        cell.setData(viewModel: viewModel.getRepositoryData(for: indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedRow = indexPath.row
-        performSegue(withIdentifier: "showRepositoryDetails", sender: nil)
+        viewModel.rowWasSelected(rowIndex: indexPath)
+        performSegue(withIdentifier: viewModel.repoDetailsSegueIdentifier, sender: nil)
     }
 }
 
@@ -88,7 +75,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
 extension MainViewController : UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard fetchingData == false else { return }
+        guard viewModel.fetchingData == false else { return }
         
         let position = scrollView.contentOffset.y
         
@@ -100,10 +87,10 @@ extension MainViewController : UIScrollViewDelegate{
     }
     
     func fetchMoreData(){
-        guard fetchingData == false, let lastRepoLoadedId = self.lastRepoLoadedId else { print("unknown error"); return }
+        guard viewModel.fetchingData == false else { print("unknown error"); return }
         
         print("Load more repos data")
-        fetchingData = true
+        viewModel.fetchingData = true
         
         self.tableView.tableFooterView = createSpinnerFooter()
         
@@ -111,17 +98,17 @@ extension MainViewController : UIScrollViewDelegate{
         DispatchQueue.global(qos: .background).async {
             sleep(1)
             // TODO with that there's potentially a memory leak
-            NetworkingHelpers.decodeDataDetailed(from: self.githubReposPaginationLink + "\(lastRepoLoadedId)", type: [Repository].self, printJSON: false) { [weak self, lastRepoLoadedId] data in
+            NetworkingHelpers.decodeDataDetailed(from: self.viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] data in
                 
                 self?.tableView.tableFooterView = nil
                 
-                self?.repos?.append(contentsOf: data)
+                self?.viewModel.addNewRepositories(newRepos: data)
                 self?.tableView.reloadData()
                 
-                self?.lastRepoLoadedId = data.last?.id
-                self?.fetchingData = false
+                self?.viewModel.lastRepoLoadedId = data.last?.id ?? 0
+                self?.viewModel.fetchingData = false
                 
-                print("Now total repos count: \(self?.repos?.count)")
+                print("Now total repos count: \(self?.viewModel.numberOfRows())")
             }
         }
     }

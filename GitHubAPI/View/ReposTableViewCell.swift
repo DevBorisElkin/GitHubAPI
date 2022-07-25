@@ -12,28 +12,12 @@ class ReposTableViewCell: UITableViewCell {
     @IBOutlet weak var repoId: UILabel!
     @IBOutlet weak var repoName: UILabel!
     @IBOutlet weak var ownerName: UILabel!
-    
     @IBOutlet weak var repoDescription: UITextView!
     
-    func setData(repository: Repository){
-        repoId.text = "\(repository.id)"
-        repoName.text = "\(repository.name)"
-        ownerName.text = "\(repository.owner.login)"
-        if let description = repository.description{
-            //print("repo \(repository.name) has description: \(description)")
-            repoDescription.text = "\(description)"
-        }
+    func setData(viewModel: TableViewCellViewModel){
+        repoId.text = viewModel.repoId
+        repoName.text = viewModel.repoName
+        ownerName.text = viewModel.repoOwnerName
+        repoDescription.text = viewModel.repoDescription
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

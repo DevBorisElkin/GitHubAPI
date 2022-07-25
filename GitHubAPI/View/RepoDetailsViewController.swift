@@ -12,7 +12,7 @@ class RepoDetailsViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: Any) { shareSelectedRepository() }
     
-    var selectedRepository: Repository?
+    var viewModel: TableViewCellViewModel!
     let webView = WKWebView()
     
     override func viewDidLoad() {
@@ -26,12 +26,12 @@ class RepoDetailsViewController: UIViewController {
     }
     
     func loadWebView(){
-        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
-            print("Something is wrong with selected repository or with url to that repository")
+        guard let url = viewModel.repoURL else {
+            print("Something is wrong with repository url")
             return
         }
         
-        self.navigationItem.title = selectedRepository.name
+        self.navigationItem.title = viewModel.repoName
         
         view.addSubview(webView)
         webView.load(URLRequest(url: url))
@@ -39,13 +39,13 @@ class RepoDetailsViewController: UIViewController {
     
     
     
-    public func setData(repository: Repository){
-        selectedRepository = repository
+    public func setData(tableViewCellViewModel: TableViewCellViewModel){
+        self.viewModel = tableViewCellViewModel
     }
     
     private func shareSelectedRepository(){
-        guard let selectedRepository = selectedRepository, let url = URL(string: selectedRepository.html_url) else {
-            print("Something is wrong with selected repository or with url to that repository")
+        guard let url = viewModel.repoURL else {
+            print("Something is wrong with repository url")
             return
         }
         
