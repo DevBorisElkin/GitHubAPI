@@ -22,9 +22,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         contentSizeSubtraction = view.frame.size.height + Double(100)
-        
         tableView.refreshControl = createRefreshControl()
-        
         loadDataInitially(completion: nil)
     }
     
@@ -42,15 +40,6 @@ class MainViewController: UIViewController {
             completion?()
         }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == viewModel.repoDetailsSegueIdentifier, let preparedViewModel = viewModel.getRepositoryDataForCelectedCell() else {
-           return
-        }
-        
-        var detailViewController = segue.destination as! RepoDetailsViewController
-        detailViewController.setData(tableViewCellViewModel: preparedViewModel)
-    }
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource{
@@ -65,9 +54,19 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    // MARK: open cell details
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.rowWasSelected(rowIndex: indexPath)
         performSegue(withIdentifier: viewModel.repoDetailsSegueIdentifier, sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == viewModel.repoDetailsSegueIdentifier, let preparedViewModel = viewModel.getRepositoryDataForCelectedCell() else {
+           return
+        }
+        
+        var detailViewController = segue.destination as! RepoDetailsViewController
+        detailViewController.setData(tableViewCellViewModel: preparedViewModel)
     }
 }
 
@@ -92,7 +91,7 @@ extension MainViewController : UIScrollViewDelegate{
         print("Load more repos data")
         viewModel.fetchingData = true
         
-        self.tableView.tableFooterView = createSpinnerFooter()
+        self.tableView.tableFooterView = UIHelpers.createSpinnerFooter(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         
         // this thing is only for delay TODO fix it
         DispatchQueue.global(qos: .background).async {
@@ -113,16 +112,7 @@ extension MainViewController : UIScrollViewDelegate{
         }
     }
     
-    private func createSpinnerFooter() -> UIView{
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
-        
-        let spinner = UIActivityIndicatorView()
-        spinner.center = footerView.center
-        footerView.addSubview(spinner)
-        
-        spinner.startAnimating()
-        return footerView
-    }
+    
 }
 // MARK: pull to refresh
 extension MainViewController{

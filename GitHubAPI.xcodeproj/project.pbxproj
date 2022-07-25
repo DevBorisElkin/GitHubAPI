@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		525B7E97288EA27C0099C11C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B7E96288EA27C0099C11C /* ViewModel.swift */; };
 		525B7E99288EA4710099C11C /* TableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B7E98288EA4710099C11C /* TableViewCellViewModel.swift */; };
+		525B7E9B288ED11E0099C11C /* UIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525B7E9A288ED11E0099C11C /* UIHelpers.swift */; };
 		5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548D2867A99100FF3B3D /* AppDelegate.swift */; };
 		529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548F2867A99100FF3B3D /* SceneDelegate.swift */; };
 		529254922867A99100FF3B3D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529254912867A99100FF3B3D /* MainViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		525B7E96288EA27C0099C11C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		525B7E98288EA4710099C11C /* TableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellViewModel.swift; sourceTree = "<group>"; };
+		525B7E9A288ED11E0099C11C /* UIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelpers.swift; sourceTree = "<group>"; };
 		5292548A2867A99100FF3B3D /* GitHubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292548D2867A99100FF3B3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5292548F2867A99100FF3B3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				52F84A0E288C37540061D223 /* NetworkingHelpers.swift */,
+				525B7E9A288ED11E0099C11C /* UIHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				525B7E97288EA27C0099C11C /* ViewModel.swift in Sources */,
 				52F849D5288BFA200061D223 /* Repository.swift in Sources */,
 				529254922867A99100FF3B3D /* MainViewController.swift in Sources */,
+				525B7E9B288ED11E0099C11C /* UIHelpers.swift in Sources */,
 				52F849D3288BF9850061D223 /* RepositoryOwner.swift in Sources */,
 				52F84A0C288C35800061D223 /* RepoSimplified.swift in Sources */,
 				52F84A0F288C37540061D223 /* NetworkingHelpers.swift in Sources */,
