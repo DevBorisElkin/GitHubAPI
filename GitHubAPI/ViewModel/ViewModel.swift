@@ -32,8 +32,8 @@ class ViewModel{
         "showRepositoryDetails"
     }
     
-    func getGithubRepositoriesLink() -> String{
-        "\(githubReposPaginationLink)\(lastRepoLoadedId)"
+    func getGithubRepositoriesLink(previousRepoId: Int = 0) -> String{
+        "\(githubReposPaginationLink)\(previousRepoId)"
     }
     
     func setRepositories(newRepos: [Repository]){

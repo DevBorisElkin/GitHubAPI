@@ -27,15 +27,21 @@ class MainViewController: UIViewController {
     }
     
     func loadDataInitially(completion: (() -> ())?){
-        NetworkingHelpers.decodeDataDetailed(from: viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] data in
+        NetworkingHelpers.decodeDataWithResult(from: viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] result in
             
-            self?.viewModel.setRepositories(newRepos: data)
+            switch result{
+            case .success(let repositories):
+                self?.viewModel.setRepositories(newRepos: repositories)
+                self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
+                print("Number of repos: \(repositories.count)")
+            case .failure(let error):
+                self?.viewModel.setRepositories(newRepos: [])
+                self?.viewModel.lastRepoLoadedId = 0
+                print("*Couldn't get data = failure")
+            }
 
             self?.tableView.reloadData()
             self?.viewModel.fetchingData = false
-            self?.viewModel.lastRepoLoadedId = data.last?.id ?? 0
-            
-            print("Number of repos: \(data.count)")
             
             completion?()
         }
@@ -97,22 +103,25 @@ extension MainViewController : UIScrollViewDelegate{
         DispatchQueue.global(qos: .background).async {
             sleep(1)
             // TODO with that there's potentially a memory leak
-            NetworkingHelpers.decodeDataDetailed(from: self.viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] data in
+            NetworkingHelpers.decodeDataWithResult(from: self.viewModel.getGithubRepositoriesLink(previousRepoId: self.viewModel.lastRepoLoadedId), type: [Repository].self, printJSON: false){ [weak self] result in
                 
                 self?.tableView.tableFooterView = nil
                 
-                self?.viewModel.addNewRepositories(newRepos: data)
-                self?.tableView.reloadData()
+                switch result{
+                case .success(let repositories):
+                    self?.viewModel.addNewRepositories(newRepos: repositories)
+                    self?.tableView.reloadData()
+                    self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
+                case .failure(let error):
+                    print("Unsuccessfully retrieved data. Error:\n\(error)")
+                }
                 
-                self?.viewModel.lastRepoLoadedId = data.last?.id ?? 0
                 self?.viewModel.fetchingData = false
                 
                 print("Now total repos count: \(self?.viewModel.numberOfRows())")
             }
         }
     }
-    
-    
 }
 // MARK: pull to refresh
 extension MainViewController{
@@ -120,10 +129,12 @@ extension MainViewController{
     private func createRefreshControl() -> UIRefreshControl{
         var refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(onCalledToRefresh(sender:)), for: .valueChanged)
+        
         return refreshControl
     }
     
     @objc private func onCalledToRefresh(sender: UIRefreshControl){
+        print("onCalledToRefresh")
         loadDataInitially {
             sender.endRefreshing()
         }

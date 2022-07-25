@@ -18,7 +18,6 @@
 		5292549A2867A99600FF3B3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529254982867A99600FF3B3D /* LaunchScreen.storyboard */; };
 		52F849D3288BF9850061D223 /* RepositoryOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F849D2288BF9850061D223 /* RepositoryOwner.swift */; };
 		52F849D5288BFA200061D223 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F849D4288BFA200061D223 /* Repository.swift */; };
-		52F84A0C288C35800061D223 /* RepoSimplified.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A0B288C35800061D223 /* RepoSimplified.swift */; };
 		52F84A0F288C37540061D223 /* NetworkingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A0E288C37540061D223 /* NetworkingHelpers.swift */; };
 		52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A14288C4EA10061D223 /* ReposTableViewCell.swift */; };
 		52F84A1A288D58400061D223 /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F84A19288D58400061D223 /* RepoDetailsViewController.swift */; };
@@ -38,7 +37,6 @@
 		5292549B2867A99600FF3B3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52F849D2288BF9850061D223 /* RepositoryOwner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryOwner.swift; sourceTree = "<group>"; };
 		52F849D4288BFA200061D223 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		52F84A0B288C35800061D223 /* RepoSimplified.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSimplified.swift; sourceTree = "<group>"; };
 		52F84A0E288C37540061D223 /* NetworkingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHelpers.swift; sourceTree = "<group>"; };
 		52F84A14288C4EA10061D223 /* ReposTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposTableViewCell.swift; sourceTree = "<group>"; };
 		52F84A19288D58400061D223 /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			children = (
 				52F849D2288BF9850061D223 /* RepositoryOwner.swift */,
 				52F849D4288BFA200061D223 /* Repository.swift */,
-				52F84A0B288C35800061D223 /* RepoSimplified.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,7 +215,6 @@
 				529254922867A99100FF3B3D /* MainViewController.swift in Sources */,
 				525B7E9B288ED11E0099C11C /* UIHelpers.swift in Sources */,
 				52F849D3288BF9850061D223 /* RepositoryOwner.swift in Sources */,
-				52F84A0C288C35800061D223 /* RepoSimplified.swift in Sources */,
 				52F84A0F288C37540061D223 /* NetworkingHelpers.swift in Sources */,
 				5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */,
 				529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */,
