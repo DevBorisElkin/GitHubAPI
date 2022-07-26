@@ -42,6 +42,7 @@ public class NetworkingHelpers{
         task.resume()
     }
     // MARK: Example code - can either successfully return value or error
+    /// Completion is called on UI thread
     public static func decodeDataWithResult<T: Decodable>(from url: String, type: T.Type, printJSON: Bool, completion: @escaping (Result<T, Error>) -> ()){
         
         loadDataFromURLWithResult(from: url, printJSON: printJSON) { result in

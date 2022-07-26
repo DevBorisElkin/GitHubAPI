@@ -99,10 +99,8 @@ extension MainViewController : UIScrollViewDelegate{
         
         self.tableView.tableFooterView = UIHelpers.createSpinnerFooter(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         
-        // this thing is only for delay TODO fix it
         DispatchQueue.global(qos: .background).async {
             sleep(1)
-            // TODO with that there's potentially a memory leak
             NetworkingHelpers.decodeDataWithResult(from: self.viewModel.getGithubRepositoriesLink(previousRepoId: self.viewModel.lastRepoLoadedId), type: [Repository].self, printJSON: false){ [weak self] result in
                 
                 self?.tableView.tableFooterView = nil
