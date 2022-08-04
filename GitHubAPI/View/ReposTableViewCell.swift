@@ -37,11 +37,13 @@ class ReposTableViewCell: UITableViewCell {
     let repoName: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = Constants.repoNameFont
         return label
     }()
     let ownerName: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = Constants.repoOwnerFont
         return label
     }()
     let repoDescription: UITextView = {
@@ -51,7 +53,10 @@ class ReposTableViewCell: UITableViewCell {
     }()
     let repoOwnerImageView: WebImageView = {
         let imageView = WebImageView()
+        imageView.backgroundColor = .blue
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = Constants.repoOwnerAvatarSize / 2
         return imageView
     }()
     
@@ -70,17 +75,32 @@ class ReposTableViewCell: UITableViewCell {
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardViewOffset)
         
+        // MARK: Repo name
+        cardView.addSubview(repoName)
+        repoName.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: Constants.generalInsets)
+        
+        // MARK: Repo owner Image
+        cardView.addSubview(repoOwnerImageView)
+        repoOwnerImageView.heightAnchor.constraint(equalToConstant: Constants.repoOwnerAvatarSize).isActive = true
+        repoOwnerImageView.widthAnchor.constraint(equalToConstant: Constants.repoOwnerAvatarSize).isActive = true
+        repoOwnerImageView.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: Constants.generalInsets.top).isActive = true
+        repoOwnerImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Constants.generalInsets.right).isActive = true
+        
+        // MARK: Repo owner Name
+        cardView.addSubview(ownerName)
+        ownerName.anchor(top: repoName.bottomAnchor, leading: repoOwnerImageView.trailingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: Constants.generalInsets)
+        
         // MARK: add subviews
         
         
-        cardView.addSubview(repoId)
+        //cardView.addSubview(repoId)
         //addSubview(repoName)
         //addSubview(ownerName)
         //addSubview(repoDescription)
         //addSubview(repoOwnerImageView)
         
         // repoId constraints
-        repoId.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: UIEdgeInsets(top: Constants.generalInsets.top, left: Constants.generalInsets.left, bottom: 777, right: Constants.generalInsets.right))
+//        repoId.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: UIEdgeInsets(top: Constants.generalInsets.top, left: Constants.generalInsets.left, bottom: 777, right: Constants.generalInsets.right))
     }
     
     func setData(viewModel: TableViewCellViewModel){
@@ -88,5 +108,7 @@ class ReposTableViewCell: UITableViewCell {
         repoName.text = viewModel.repoName
         ownerName.text = viewModel.repoOwnerName
         repoDescription.text = viewModel.repoDescription
+        
+        repoOwnerImageView.set(imageURL: viewModel.repoOwnerAvatarUrl)
     }
 }
