@@ -17,70 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-Mq-v0M">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-Mq-v0M">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repositoryCell" rowHeight="239" id="cpd-D2-ewL" customClass="ReposTableViewCell" customModule="GitHubAPI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="239"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cpd-D2-ewL" id="7Dc-ry-z9B">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="239"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGn-Hp-fP3">
-                                                    <rect key="frame" x="20" y="25" width="374" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repository Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6t-li-306">
-                                                    <rect key="frame" x="20" y="54" width="374" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner of repo name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-if-io4">
-                                                    <rect key="frame" x="20" y="81" width="374" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Description of repo" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhs-60-AiD">
-                                                    <rect key="frame" x="20" y="108" width="374" height="87"/>
-                                                    <color key="backgroundColor" red="0.4509539923" green="0.80796033140000001" blue="0.54617658449999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="87" id="nOc-98-j4d"/>
-                                                    </constraints>
-                                                    <color key="textColor" systemColor="labelColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Tc6-if-io4" firstAttribute="top" secondItem="U6t-li-306" secondAttribute="bottom" constant="6" id="33S-Fp-6U5"/>
-                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="86h-cz-7Wo"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TGn-Hp-fP3" secondAttribute="trailing" id="9PC-CX-IlB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="U6t-li-306" secondAttribute="trailing" id="DQV-aj-wIQ"/>
-                                                <constraint firstItem="U6t-li-306" firstAttribute="top" secondItem="TGn-Hp-fP3" secondAttribute="bottom" constant="8" symbolic="YES" id="FY1-DH-LmF"/>
-                                                <constraint firstItem="Tc6-if-io4" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="Rem-8E-26o"/>
-                                                <constraint firstItem="U6t-li-306" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="UAC-mK-Rfi"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Tc6-if-io4" secondAttribute="trailing" id="bsN-gX-Ydy"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="leading" secondItem="7Dc-ry-z9B" secondAttribute="leadingMargin" id="cvJ-Qy-rRt"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Dhs-60-AiD" secondAttribute="bottom" constant="33" id="dmI-H7-YLm"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="top" secondItem="Tc6-if-io4" secondAttribute="bottom" constant="6" id="mSv-0s-p8s"/>
-                                                <constraint firstItem="Dhs-60-AiD" firstAttribute="trailing" secondItem="7Dc-ry-z9B" secondAttribute="trailingMargin" id="uG9-sX-3Ne"/>
-                                                <constraint firstItem="TGn-Hp-fP3" firstAttribute="top" secondItem="7Dc-ry-z9B" secondAttribute="topMargin" constant="14" id="xh3-Ty-LEs"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="ownerName" destination="Tc6-if-io4" id="2gL-NH-AsS"/>
-                                            <outlet property="repoDescription" destination="Dhs-60-AiD" id="o49-zi-mJZ"/>
-                                            <outlet property="repoId" destination="TGn-Hp-fP3" id="BmX-Rw-WCu"/>
-                                            <outlet property="repoName" destination="U6t-li-306" id="Eec-FP-zLq"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="RC3-Zf-acK"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="v2E-Qe-alv"/>
@@ -114,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="PQ1-Ta-bcK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="Repo Name Here" id="HtD-oN-tN4">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="bxx-fQ-NXK">
@@ -150,9 +89,6 @@
     </scenes>
     <resources>
         <image name="square.and.arrow.up.on.square" catalog="system" width="117" height="128"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -21,6 +21,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prepareTableView()
+        initialSetup()
+    }
+    
+    func prepareTableView() {
+        tableView.register(ReposTableViewCell.self, forCellReuseIdentifier: ReposTableViewCell.reuseId)
+        
+    }
+    
+    func initialSetup(){
         contentSizeSubtraction = view.frame.size.height + Double(100)
         tableView.refreshControl = createRefreshControl()
         loadDataInitially(completion: nil)
@@ -46,6 +56,15 @@ class MainViewController: UIViewController {
             completion?()
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == viewModel.repoDetailsSegueIdentifier, let preparedViewModel = viewModel.getRepositoryDataForCelectedCell() else {
+           return
+        }
+        
+        var detailViewController = segue.destination as! RepoDetailsViewController
+        detailViewController.setData(tableViewCellViewModel: preparedViewModel)
+    }
 }
 
 extension MainViewController : UITableViewDelegate, UITableViewDataSource{
@@ -60,19 +79,14 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return RepoCellLayoutCalculator.calculateCellHeight()
+    }
+    
     // MARK: open cell details
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.rowWasSelected(rowIndex: indexPath)
         performSegue(withIdentifier: viewModel.repoDetailsSegueIdentifier, sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == viewModel.repoDetailsSegueIdentifier, let preparedViewModel = viewModel.getRepositoryDataForCelectedCell() else {
-           return
-        }
-        
-        var detailViewController = segue.destination as! RepoDetailsViewController
-        detailViewController.setData(tableViewCellViewModel: preparedViewModel)
     }
 }
 
