@@ -29,9 +29,15 @@ class ReposTableViewCell: UITableViewCell {
         return view
     }()
     
-    let repoId: UILabel = {
-        var label = UILabel()
+    let repoId: PaddingLabel = {
+        var label = PaddingLabel()
+        label.setInsets(insets: UIEdgeInsets(top: 3, left: 10, bottom: 4, right: 10))
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = Constants.repoIdFont
+        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.textColor = #colorLiteral(red: 0.4477045536, green: 0.4294939339, blue: 0.4558002353, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
         return label
     }()
     let repoName: PaddingLabel = {
@@ -56,7 +62,29 @@ class ReposTableViewCell: UITableViewCell {
     }()
     let repoDescription: UITextView = {
         var label = UITextView()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        //label.translatesAutoresizingMaskIntoConstraints = false
+        //label.setInsets(insets: UIEdgeInsets(top: 3, left: 5, bottom: 4, right: 5))
+//        label.font = Constants.repoDescriptionFont
+//        label.lineBreakMode = .byClipping
+//        label.numberOfLines = 0
+//        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+//        label.layer.cornerRadius = 10
+//        label.layer.masksToBounds = true
+        
+        //
+        label.backgroundColor = .red
+        
+        label.font = Constants.repoDescriptionFont
+        label.isScrollEnabled = false
+        label.isSelectable = true
+        label.isUserInteractionEnabled = true
+        label.isEditable = false
+        
+        let padding = label.textContainer.lineFragmentPadding
+        label.textContainerInset = UIEdgeInsets.init(top: 0, left: -padding, bottom: 0, right: -padding)
+        
+        label.dataDetectorTypes = UIDataDetectorTypes.all
+        //
         return label
     }()
     let repoOwnerImageView: WebImageView = {
@@ -100,17 +128,15 @@ class ReposTableViewCell: UITableViewCell {
         ownerName.centerYAnchor.constraint(equalTo: repoOwnerImageView.centerYAnchor).isActive = true
         ownerName.leadingAnchor.constraint(equalTo: repoOwnerImageView.trailingAnchor, constant: Constants.repoOwnerInsets.left).isActive = true
         
-        // MARK: add subviews
+        // MARK: Repo ID
+        cardView.addSubview(repoId)
+        repoId.centerYAnchor.constraint(equalTo: repoName.centerYAnchor).isActive = true
+        repoId.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Constants.repoIdInsets.right).isActive = true
         
-        
-        //cardView.addSubview(repoId)
-        //addSubview(repoName)
-        //addSubview(ownerName)
-        //addSubview(repoDescription)
-        //addSubview(repoOwnerImageView)
-        
-        // repoId constraints
-//        repoId.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: UIEdgeInsets(top: Constants.generalInsets.top, left: Constants.generalInsets.left, bottom: 777, right: Constants.generalInsets.right))
+        // MARK: repo description
+        cardView.addSubview(repoDescription)
+//        repoDescription.anchor(top: repoOwnerImageView.bottomAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: Constants.generalInsets)
+//        repoDescription.frame = CGRect(x: cardView.frame.origin.x + Constants.generalInsets.left, y: repoOwnerImageView.frame.maxY, width: frame.width - Constants.generalInsets.left - Constants.generalInsets.right, height: 300)
     }
     
     func setData(viewModel: TableViewCellViewModel){
@@ -120,5 +146,16 @@ class ReposTableViewCell: UITableViewCell {
         repoDescription.text = viewModel.repoDescription
         
         repoOwnerImageView.set(imageURL: viewModel.repoOwnerAvatarUrl)
+        
+        // MARK: Adjust repo description frame
+        
+        let cardViewWidth = Constants.getScreenWidth() - Constants.cardViewOffset.left - Constants.cardViewOffset.right
+        let width = cardViewWidth - Constants.repoDescriptionInsets.left - Constants.repoDescriptionInsets.right
+        
+        var repoDescriptionFrame = CGRect(origin: CGPoint(x: Constants.repoDescriptionInsets.left, y: Constants.repoDescriptionInsets.top), size: CGSize.zero)
+        
+        repoDescriptionFrame.size = CGSize(width: width, height: 100)
+        
+        repoDescription.frame = repoDescriptionFrame
     }
 }

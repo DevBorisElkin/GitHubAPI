@@ -15,6 +15,8 @@
 		526196EC289C324D008A35E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196EB289C324D008A35E5 /* Constants.swift */; };
 		526196EE289C33DB008A35E5 /* RepoCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */; };
 		526196F0289C4700008A35E5 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196EF289C4700008A35E5 /* PaddingLabel.swift */; };
+		526196F2289C617D008A35E5 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F1289C617D008A35E5 /* StringHeight.swift */; };
+		526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F4289C62EA008A35E5 /* RepoCellSizes.swift */; };
 		5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548D2867A99100FF3B3D /* AppDelegate.swift */; };
 		529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548F2867A99100FF3B3D /* SceneDelegate.swift */; };
 		529254922867A99100FF3B3D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529254912867A99100FF3B3D /* MainViewController.swift */; };
@@ -37,6 +39,8 @@
 		526196EB289C324D008A35E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		526196EF289C4700008A35E5 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		526196F1289C617D008A35E5 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
+		526196F4289C62EA008A35E5 /* RepoCellSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellSizes.swift; sourceTree = "<group>"; };
 		5292548A2867A99100FF3B3D /* GitHubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292548D2867A99100FF3B3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5292548F2867A99100FF3B3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,8 +81,18 @@
 			children = (
 				526196EB289C324D008A35E5 /* Constants.swift */,
 				526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */,
+				526196F4289C62EA008A35E5 /* RepoCellSizes.swift */,
 			);
 			path = LayoutCalculations;
+			sourceTree = "<group>";
+		};
+		526196F3289C624A008A35E5 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				526196EF289C4700008A35E5 /* PaddingLabel.swift */,
+				526196E6289C2D06008A35E5 /* WebImageView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		529254812867A99100FF3B3D = {
@@ -103,6 +117,7 @@
 				52F84A10288C4C590061D223 /* AppDelegates */,
 				52F84A11288C4C8C0061D223 /* Storyboards */,
 				52F84A0D288C37270061D223 /* Helpers */,
+				526196F3289C624A008A35E5 /* CustomViews */,
 				526196EA289C323A008A35E5 /* LayoutCalculations */,
 				52F849D1288BF96F0061D223 /* Model */,
 				52F84A13288C4E710061D223 /* View */,
@@ -127,9 +142,8 @@
 			children = (
 				52F84A0E288C37540061D223 /* NetworkingHelpers.swift */,
 				525B7E9A288ED11E0099C11C /* UIHelpers.swift */,
-				526196E6289C2D06008A35E5 /* WebImageView.swift */,
 				526196E8289C2FC6008A35E5 /* Constraints.swift */,
-				526196EF289C4700008A35E5 /* PaddingLabel.swift */,
+				526196F1289C617D008A35E5 /* StringHeight.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -249,6 +263,8 @@
 				525B7E99288EA4710099C11C /* TableViewCellViewModel.swift in Sources */,
 				52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */,
 				526196EE289C33DB008A35E5 /* RepoCellLayoutCalculator.swift in Sources */,
+				526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */,
+				526196F2289C617D008A35E5 /* StringHeight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,8 @@ class TableViewCellViewModel{
         URL(string: repoLink)
     }
     
+    var repoCellSizes: RepoCellSizes!
+    
     init(repository: Repository){
         self.repository = repository
     }
