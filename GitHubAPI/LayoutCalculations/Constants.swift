@@ -16,6 +16,7 @@ class Constants {
     
     static let cardViewOffset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     static let generalInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    static let testInsets = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
     
     static let repoOwnerAvatarSize: CGFloat = 50
 }

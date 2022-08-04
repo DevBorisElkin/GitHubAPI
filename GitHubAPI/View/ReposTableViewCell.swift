@@ -38,12 +38,19 @@ class ReposTableViewCell: UITableViewCell {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.repoNameFont
+        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
+        
         return label
     }()
     let ownerName: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.repoOwnerFont
+        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.layer.cornerRadius = 10
+        label.layer.masksToBounds = true
         return label
     }()
     let repoDescription: UITextView = {
@@ -77,7 +84,7 @@ class ReposTableViewCell: UITableViewCell {
         
         // MARK: Repo name
         cardView.addSubview(repoName)
-        repoName.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: Constants.generalInsets)
+        repoName.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: nil, padding: Constants.generalInsets)
         
         // MARK: Repo owner Image
         cardView.addSubview(repoOwnerImageView)
@@ -88,7 +95,7 @@ class ReposTableViewCell: UITableViewCell {
         
         // MARK: Repo owner Name
         cardView.addSubview(ownerName)
-        ownerName.anchor(top: repoName.bottomAnchor, leading: repoOwnerImageView.trailingAnchor, bottom: nil, trailing: cardView.trailingAnchor, padding: Constants.generalInsets)
+        ownerName.anchor(top: repoName.bottomAnchor, leading: repoOwnerImageView.trailingAnchor, bottom: nil, trailing: nil, padding: Constants.generalInsets)
         
         // MARK: add subviews
         
