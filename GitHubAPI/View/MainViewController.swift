@@ -75,12 +75,16 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: viewModel.repoCellIdentifier) as! ReposTableViewCell
-        cell.setData(viewModel: viewModel.getRepositoryData(for: indexPath))
+        cell.setData(viewModel: viewModel.getRepoCellViewModel(for: indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return RepoCellLayoutCalculator.calculateCellHeight()
+        var cellHeight = viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
+        print("Cell height: \(cellHeight)")
+        //return viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
+        //return 250
+        return cellHeight
     }
     
     // MARK: open cell details

@@ -9,22 +9,26 @@ import Foundation
 
 class TableViewCellViewModel{
     
-    private var repository: Repository
+    var repoId: String
+    var repoName: String
+    var repoOwnerName: String
+    var repoDescription: String
+    var repoLink: String
+    var repoOwnerAvatarUrl: String
     
-    var repoId: String { "\(repository.id)" }
-    var repoName: String { repository.name }
-    var repoOwnerName: String { repository.owner.login }
-    var repoDescription: String { repository.description != nil ? repository.description! : "" }
-    var repoLink: String { repository.html_url }
-    var repoOwnerAvatarUrl: String { repository.owner.avatar_url }
+    var repoURL: URL?
     
-    var repoURL: URL? {
-        URL(string: repoLink)
-    }
-    
-    var repoCellSizes: RepoCellSizes!
+    var repoCellSizes: RepoCellSizes
     
     init(repository: Repository){
-        self.repository = repository
+        repoId = "\(repository.id)"
+        repoName = repository.name
+        repoOwnerName = repository.owner.login
+        repoDescription = repository.description ?? ""
+        repoLink = repository.html_url
+        repoOwnerAvatarUrl = repository.owner.avatar_url
+        repoURL = URL(string: repoLink)
+        
+        self.repoCellSizes = RepoCellLayoutCalculator.calculateCellSizes(selectedRepo: repository)
     }
 }

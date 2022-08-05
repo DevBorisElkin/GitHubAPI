@@ -46,7 +46,7 @@ class ViewModel{
     
     func numberOfRows() -> Int{ return repos.count }
     
-    func getRepositoryData(for indexPath: IndexPath) -> TableViewCellViewModel{
+    func getRepoCellViewModel(for indexPath: IndexPath) -> TableViewCellViewModel{
         return TableViewCellViewModel(repository: repos[indexPath.row])
     }
     func getRepositoryDataForCelectedCell() -> TableViewCellViewModel?{

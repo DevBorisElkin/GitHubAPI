@@ -149,13 +149,6 @@ class ReposTableViewCell: UITableViewCell {
         
         // MARK: Adjust repo description frame
         
-        let cardViewWidth = Constants.getScreenWidth() - Constants.cardViewOffset.left - Constants.cardViewOffset.right
-        let width = cardViewWidth - Constants.repoDescriptionInsets.left - Constants.repoDescriptionInsets.right
-        
-        var repoDescriptionFrame = CGRect(origin: CGPoint(x: Constants.repoDescriptionInsets.left, y: Constants.repoDescriptionInsets.top), size: CGSize.zero)
-        
-        repoDescriptionFrame.size = CGSize(width: width, height: 100)
-        
-        repoDescription.frame = repoDescriptionFrame
+        repoDescription.frame = viewModel.repoCellSizes.repoDescriptionFrame
     }
 }

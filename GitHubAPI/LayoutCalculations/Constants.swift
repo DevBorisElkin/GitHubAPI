@@ -24,13 +24,23 @@ class Constants {
     static let repoNameInsets = UIEdgeInsets(top: 13, left: 13, bottom: 13, right: 13)
     static let repoOwnerInsets = UIEdgeInsets(top: 13, left: 7, bottom: 13, right: 13)
     static let repoIdInsets = UIEdgeInsets(top: 15, left: 7, bottom: 13, right: 13)
-    static let repoDescriptionInsets = UIEdgeInsets(top: 95, left: 7, bottom: 15, right: 7)
+    static let repoDescriptionInsets = UIEdgeInsets(top: 95, left: 7, bottom: 45, right: 7)
     
     static let repoOwnerAvatarSize: CGFloat = 30
     
     static func getScreenWidth() -> CGFloat {
         return UIScreen.main.bounds.width
     }
+    
+    static var repoDescriptionTextWidth: CGFloat {
+        get{
+            return UIScreen.main.bounds.width - repoDescriptionInsets.left - repoDescriptionInsets.right
+        }
+    }
+    
+    static var cardViewWidth = Constants.getScreenWidth() - Constants.cardViewOffset.left - Constants.cardViewOffset.right
+    
+    static var repoDescriptionTextWidthWithCardView: CGFloat = cardViewWidth - repoDescriptionInsets.left - repoDescriptionInsets.right
     
     static let minifiedPostLimitLines: CGFloat = 4
 }
