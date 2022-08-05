@@ -7,31 +7,23 @@
 
 import UIKit
 
-// check out
 // https://docs.github.com/en/rest
 
 class MainViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
     var viewModel = ViewModel()
-    
     var contentSizeSubtraction: Double!
+  
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        prepareTableView()
         initialSetup()
-    }
-    
-    func prepareTableView() {
-        tableView.register(ReposTableViewCell.self, forCellReuseIdentifier: ReposTableViewCell.reuseId)
-        
     }
     
     func initialSetup(){
         contentSizeSubtraction = view.frame.size.height + Double(100)
+        tableView.register(ReposTableViewCell.self, forCellReuseIdentifier: ReposTableViewCell.reuseId)
         tableView.refreshControl = createRefreshControl()
         loadDataInitially(completion: nil)
     }
@@ -67,6 +59,7 @@ class MainViewController: UIViewController {
     }
 }
 
+// MARK: extensions for table view
 extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,11 +73,7 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cellHeight = viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
-        print("Cell height: \(cellHeight)")
-        //return viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
-        //return 250
-        return cellHeight
+        return viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
     }
     
     // MARK: open cell details
@@ -112,13 +101,11 @@ extension MainViewController : UIScrollViewDelegate{
     func fetchMoreData(){
         guard viewModel.fetchingData == false else { print("unknown error"); return }
         
-        print("Load more repos data")
         viewModel.fetchingData = true
         
         self.tableView.tableFooterView = UIHelpers.createSpinnerFooter(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
         
-        DispatchQueue.global(qos: .background).async {
-            sleep(1)
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
             NetworkingHelpers.decodeDataWithResult(from: self.viewModel.getGithubRepositoriesLink(previousRepoId: self.viewModel.lastRepoLoadedId), type: [Repository].self, printJSON: false){ [weak self] result in
                 
                 self?.tableView.tableFooterView = nil
@@ -137,6 +124,7 @@ extension MainViewController : UIScrollViewDelegate{
         }
     }
 }
+
 // MARK: pull to refresh
 extension MainViewController{
     

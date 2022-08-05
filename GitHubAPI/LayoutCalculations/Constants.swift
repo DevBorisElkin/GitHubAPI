@@ -31,4 +31,13 @@ class Constants {
     static let repoOwnerInsets = UIEdgeInsets(top: 13, left: 7, bottom: 13, right: 13)
     static let repoIdInsets = UIEdgeInsets(top: 15, left: 7, bottom: 13, right: 13)
     static let repoDescriptionInsets = UIEdgeInsets(top: 95, left: 13, bottom: 45, right: 13)
+    
+    // MARK: Colors
+    static let gitgubColor = #colorLiteral(red: 0.1803921569, green: 0.1803921569, blue: 0.1803921569, alpha: 1)
+    static let gitgubPageBottomColor = #colorLiteral(red: 0.231372549, green: 0.2235294118, blue: 0.2705882353, alpha: 1)
+    static let gitgubWhiteColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
+    //static let cardViewTopColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+    //static let cardViewBottomColor = #colorLiteral(red: 0.6706476808, green: 0.2497586012, blue: 0.9693264365, alpha: 1)
+    static let cardViewTopColor = #colorLiteral(red: 0.6948638793, green: 0.5592857087, blue: 0.9686274529, alpha: 1)
+    static let cardViewBottomColor = #colorLiteral(red: 0.8008915726, green: 0.5635382507, blue: 0.9693264365, alpha: 1)
 }

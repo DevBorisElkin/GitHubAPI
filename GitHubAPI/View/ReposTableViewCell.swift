@@ -17,22 +17,32 @@ class ReposTableViewCell: UITableViewCell {
         view.layer.cornerRadius = 20
         view.backgroundColor = #colorLiteral(red: 0.800581634, green: 0.589300096, blue: 1, alpha: 1)
         
-        view.layer.masksToBounds = true
-        view.clipsToBounds = true
-        
-        view.layer.shadowColor = #colorLiteral(red: 0.3663252592, green: 0.3663252592, blue: 0.3663252592, alpha: 1)
+        // shadow setup
+        view.layer.shadowColor = #colorLiteral(red: 0.09200996906, green: 0.08846413344, blue: 0.1079702899, alpha: 1)
         view.layer.shadowRadius = 3
         view.layer.shadowOpacity = 0.2
         view.layer.shadowOffset = CGSize(width: 5, height: 10)
         
         return view
     }()
+    
+    let cardViewGradient: GradientView = {
+        let gradientView = GradientView()
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+        var startColor = Constants.cardViewTopColor
+        var endColor = Constants.cardViewBottomColor
+        gradientView.setColors(startColor: startColor, endColor: endColor)
+        gradientView.layer.cornerRadius = 20
+        gradientView.layer.masksToBounds = true
+        return gradientView
+    }()
+    
     let repoId: PaddingLabel = {
         var label = PaddingLabel()
         label.setInsets(insets: UIEdgeInsets(top: 3, left: 10, bottom: 4, right: 10))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.repoIdFont
-        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.backgroundColor = Constants.gitgubWhiteColor
         label.textColor = #colorLiteral(red: 0.4477045536, green: 0.4294939339, blue: 0.4558002353, alpha: 1)
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
@@ -43,7 +53,7 @@ class ReposTableViewCell: UITableViewCell {
         label.setInsets(insets: UIEdgeInsets(top: 3, left: 5, bottom: 4, right: 5))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.repoNameFont
-        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.backgroundColor = Constants.gitgubWhiteColor
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         
@@ -58,7 +68,7 @@ class ReposTableViewCell: UITableViewCell {
         var label = PaddingLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = Constants.repoOwnerFont
-        label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.backgroundColor = Constants.gitgubWhiteColor
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
         return label
@@ -78,7 +88,7 @@ class ReposTableViewCell: UITableViewCell {
         label.dataDetectorTypes = UIDataDetectorTypes.all
         
         label.backgroundColor = .clear
-        label.textColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
+        label.textColor = Constants.gitgubWhiteColor
         return label
     }()
     let repoOwnerImageView: WebImageView = {
@@ -93,6 +103,7 @@ class ReposTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = .clear
         manageConstraints()
     }
     
@@ -104,6 +115,10 @@ class ReposTableViewCell: UITableViewCell {
         // MARK: cardView
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardViewOffset)
+        
+        // MARK: cardView gradient
+        cardView.addSubview(cardViewGradient)
+        cardViewGradient.fillSuperview()
         
         // MARK: Repo ID constraints
         cardView.addSubview(repoId)
