@@ -11,8 +11,6 @@ import UIKit
 final class RepoCellLayoutCalculator {
     static func calculateCellSizes(selectedRepo: Repository) -> RepoCellSizes {
         
-        let cardViewWidth = Constants.getScreenWidth() - Constants.cardViewOffset.left - Constants.cardViewOffset.right
-        
         var repoDescriptionFrame = CGRect(origin: CGPoint(x: Constants.repoDescriptionInsets.left, y: Constants.repoDescriptionInsets.top), size: CGSize.zero)
         
         if let repoDescription = selectedRepo.description, !repoDescription.isEmpty{
