@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
   
     @IBOutlet weak var tableView: UITableView!
     
+    let titleView = TitleView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -26,6 +28,8 @@ class MainViewController: UIViewController {
         tableView.register(ReposTableViewCell.self, forCellReuseIdentifier: ReposTableViewCell.reuseId)
         tableView.refreshControl = createRefreshControl()
         loadDataInitially(completion: nil)
+        
+        navigationItem.titleView = titleView
     }
     
     func loadDataInitially(completion: (() -> ())?){

@@ -16,11 +16,14 @@ class Constants {
     static let repoOwnerFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     static let repoIdFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     static let repoDescriptionFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+    static let pageTitleFont = UIFont.systemFont(ofSize: 17, weight: .medium)
     
     // MARK: General insets and values:
     // card view offsets from parent view
     static let cardViewOffset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     static let repoOwnerAvatarSize: CGFloat = 30
+    static let titleViewImageSize: CGFloat = 25
+    static let titleViewTextWidth: CGFloat = 160
     static var screenWidth: CGFloat = UIScreen.main.bounds.width
     static var cardViewWidth = Constants.screenWidth - Constants.cardViewOffset.left - Constants.cardViewOffset.right
     static var repoDescriptionTextWidthWithCardView: CGFloat = cardViewWidth - repoDescriptionInsets.left - repoDescriptionInsets.right
@@ -36,8 +39,6 @@ class Constants {
     static let gitgubColor = #colorLiteral(red: 0.1803921569, green: 0.1803921569, blue: 0.1803921569, alpha: 1)
     static let gitgubPageBottomColor = #colorLiteral(red: 0.231372549, green: 0.2235294118, blue: 0.2705882353, alpha: 1)
     static let gitgubWhiteColor = #colorLiteral(red: 0.9803921569, green: 0.9803921569, blue: 0.9803921569, alpha: 1)
-    //static let cardViewTopColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
-    //static let cardViewBottomColor = #colorLiteral(red: 0.6706476808, green: 0.2497586012, blue: 0.9693264365, alpha: 1)
     static let cardViewTopColor = #colorLiteral(red: 0.6948638793, green: 0.5592857087, blue: 0.9686274529, alpha: 1)
     static let cardViewBottomColor = #colorLiteral(red: 0.8008915726, green: 0.5635382507, blue: 0.9693264365, alpha: 1)
 }
