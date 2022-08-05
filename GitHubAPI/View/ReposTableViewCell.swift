@@ -17,9 +17,8 @@ class ReposTableViewCell: UITableViewCell {
         view.layer.cornerRadius = 20
         view.backgroundColor = #colorLiteral(red: 0.800581634, green: 0.589300096, blue: 1, alpha: 1)
         
-        // ?
-        //view.layer.masksToBounds = true
-        //view.clipsToBounds = true
+        view.layer.masksToBounds = true
+        view.clipsToBounds = true
         
         view.layer.shadowColor = #colorLiteral(red: 0.3663252592, green: 0.3663252592, blue: 0.3663252592, alpha: 1)
         view.layer.shadowRadius = 3
@@ -28,7 +27,6 @@ class ReposTableViewCell: UITableViewCell {
         
         return view
     }()
-    
     let repoId: PaddingLabel = {
         var label = PaddingLabel()
         label.setInsets(insets: UIEdgeInsets(top: 3, left: 10, bottom: 4, right: 10))
@@ -48,6 +46,11 @@ class ReposTableViewCell: UITableViewCell {
         label.backgroundColor = #colorLiteral(red: 0.9666337371, green: 0.9589776397, blue: 0.9079719186, alpha: 1)
         label.layer.cornerRadius = 10
         label.layer.masksToBounds = true
+        
+        // add minimum scale if text is too long
+        label.numberOfLines = 1;
+        label.minimumScaleFactor = 8/label.font.pointSize;
+        label.adjustsFontSizeToFitWidth = true;
         
         return label
     }()
@@ -102,33 +105,30 @@ class ReposTableViewCell: UITableViewCell {
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardViewOffset)
         
-        // MARK: Repo name
+        // MARK: Repo ID constraints
+        cardView.addSubview(repoId)
+        repoId.topAnchor.constraint(equalTo: cardView.topAnchor, constant: Constants.repoNameInsets.top).isActive = true
+        repoId.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Constants.repoIdInsets.right).isActive = true
+        
+        // MARK: Repo name constraints
         cardView.addSubview(repoName)
-//        repoName.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: nil, trailing: nil, padding: Constants.repoNameInsets)
-//        repoName.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: repoId.leadingAnchor, padding: Constants.repoNameInsets)
         repoName.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Constants.repoNameInsets.left).isActive = true
         repoName.topAnchor.constraint(equalTo: cardView.topAnchor, constant: Constants.repoNameInsets.top).isActive = true
-        //repoName.heightAnchor.constraint(equalToConstant: 15).isActive = true
-        repoName.widthAnchor.constraint(lessThanOrEqualTo: <#T##NSLayoutDimension#>, multiplier: <#T##CGFloat#>: 50).isActive = true
+        repoName.trailingAnchor.constraint(lessThanOrEqualTo: repoId.leadingAnchor, constant: -Constants.repoNameInsets.right).isActive = true
         
-        // MARK: Repo owner Image
+        // MARK: Repo owner Image constraints
         cardView.addSubview(repoOwnerImageView)
         repoOwnerImageView.heightAnchor.constraint(equalToConstant: Constants.repoOwnerAvatarSize).isActive = true
         repoOwnerImageView.widthAnchor.constraint(equalToConstant: Constants.repoOwnerAvatarSize).isActive = true
-        repoOwnerImageView.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: Constants.avatarTopInsetToRepoName).isActive = true
+        repoOwnerImageView.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: Constants.repoOwnerAvatarInsets.top).isActive = true
         repoOwnerImageView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: Constants.repoOwnerAvatarInsets.left).isActive = true
         
-        // MARK: Repo owner Name
+        // MARK: Repo owner Name constraints
         cardView.addSubview(ownerName)
         ownerName.centerYAnchor.constraint(equalTo: repoOwnerImageView.centerYAnchor).isActive = true
         ownerName.leadingAnchor.constraint(equalTo: repoOwnerImageView.trailingAnchor, constant: Constants.repoOwnerInsets.left).isActive = true
         
-        // MARK: Repo ID
-        cardView.addSubview(repoId)
-        repoId.centerYAnchor.constraint(equalTo: repoName.centerYAnchor).isActive = true
-        repoId.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -Constants.repoIdInsets.right).isActive = true
-        
-        // MARK: repo description
+        // MARK: repo description constraints
         // constraints set in code from view model
         cardView.addSubview(repoDescription)
     }
@@ -140,7 +140,7 @@ class ReposTableViewCell: UITableViewCell {
         repoDescription.text = viewModel.repoDescription
         repoOwnerImageView.set(imageURL: viewModel.repoOwnerAvatarUrl)
         
-        // constraints
+        // MARK: hard 'constraints' by frame
         repoDescription.frame = viewModel.repoCellSizes.repoDescriptionFrame
     }
 }

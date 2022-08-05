@@ -22,7 +22,7 @@ final class RepoCellLayoutCalculator {
         //print("Calculated text height for item \(selectedRepo.id): \(repoDescriptionFrame.size.height)")
         
         // MARK: Calculate cell height
-        var cellTotalHeight: CGFloat = Constants.repoDescriptionInsets.top + repoDescriptionFrame.height + Constants.repoDescriptionInsets.bottom
+        let cellTotalHeight: CGFloat = Constants.repoDescriptionInsets.top + repoDescriptionFrame.height + Constants.repoDescriptionInsets.bottom
         
         print("Calculated cell total height for item \(selectedRepo.id): \(cellTotalHeight)")
         

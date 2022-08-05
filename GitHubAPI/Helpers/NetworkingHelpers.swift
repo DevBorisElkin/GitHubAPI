@@ -22,7 +22,7 @@ public class NetworkingHelpers{
     }
     
     public static func loadDataFromURL(from url: String, printJSON: Bool, completion: @escaping (Data) -> ()){
-        var task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+        let task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
             guard let data = data, error == nil else {
                 print("\(#function) Couldn't load data from URL")
                 if let error = error {
@@ -31,7 +31,7 @@ public class NetworkingHelpers{
                 return
             }
             
-            if printJSON, var json = try? JSONSerialization.jsonObject(with: data, options: []){
+            if printJSON, let json = try? JSONSerialization.jsonObject(with: data, options: []){
                 print("-----JSON Retrieved-----\n\(json)\n-----JSON Ended-----")
             }
             
@@ -62,7 +62,7 @@ public class NetworkingHelpers{
     
     public static func loadDataFromURLWithResult(from url: String, printJSON: Bool, completion: @escaping (Result<Data, Error>) -> ()){
         
-        var task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+        let task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
             guard let data = data, error == nil else {
                 print("\(#function) Couldn't load data from URL")
                 if let error = error {
@@ -73,7 +73,7 @@ public class NetworkingHelpers{
                 return
             }
             
-            if printJSON, var json = try? JSONSerialization.jsonObject(with: data, options: []){
+            if printJSON, let json = try? JSONSerialization.jsonObject(with: data, options: []){
                 print("-----JSON Retrieved-----\n\(json)\n-----JSON Ended-----")
             }
             

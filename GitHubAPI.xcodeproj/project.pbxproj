@@ -15,7 +15,6 @@
 		526196EC289C324D008A35E5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196EB289C324D008A35E5 /* Constants.swift */; };
 		526196EE289C33DB008A35E5 /* RepoCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */; };
 		526196F0289C4700008A35E5 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196EF289C4700008A35E5 /* PaddingLabel.swift */; };
-		526196F2289C617D008A35E5 /* StringHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F1289C617D008A35E5 /* StringHeight.swift */; };
 		526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F4289C62EA008A35E5 /* RepoCellSizes.swift */; };
 		5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548D2867A99100FF3B3D /* AppDelegate.swift */; };
 		529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548F2867A99100FF3B3D /* SceneDelegate.swift */; };
@@ -39,7 +38,6 @@
 		526196EB289C324D008A35E5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		526196EF289C4700008A35E5 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
-		526196F1289C617D008A35E5 /* StringHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHeight.swift; sourceTree = "<group>"; };
 		526196F4289C62EA008A35E5 /* RepoCellSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellSizes.swift; sourceTree = "<group>"; };
 		5292548A2867A99100FF3B3D /* GitHubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292548D2867A99100FF3B3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			children = (
 				526196EB289C324D008A35E5 /* Constants.swift */,
 				526196ED289C33DB008A35E5 /* RepoCellLayoutCalculator.swift */,
-				526196F4289C62EA008A35E5 /* RepoCellSizes.swift */,
 			);
 			path = LayoutCalculations;
 			sourceTree = "<group>";
@@ -133,6 +130,7 @@
 			children = (
 				52F849D2288BF9850061D223 /* RepositoryOwner.swift */,
 				52F849D4288BFA200061D223 /* Repository.swift */,
+				526196F4289C62EA008A35E5 /* RepoCellSizes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,7 +141,6 @@
 				52F84A0E288C37540061D223 /* NetworkingHelpers.swift */,
 				525B7E9A288ED11E0099C11C /* UIHelpers.swift */,
 				526196E8289C2FC6008A35E5 /* Constraints.swift */,
-				526196F1289C617D008A35E5 /* StringHeight.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -264,7 +261,6 @@
 				52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */,
 				526196EE289C33DB008A35E5 /* RepoCellLayoutCalculator.swift in Sources */,
 				526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */,
-				526196F2289C617D008A35E5 /* StringHeight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

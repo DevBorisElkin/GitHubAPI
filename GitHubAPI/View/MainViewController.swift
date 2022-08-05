@@ -47,7 +47,7 @@ class MainViewController: UIViewController {
             case .failure(let error):
                 self?.viewModel.setRepositories(newRepos: [])
                 self?.viewModel.lastRepoLoadedId = 0
-                print("*Couldn't get data = failure")
+                print("*Couldn't get data = failure: \(error.localizedDescription)")
             }
 
             self?.tableView.reloadData()
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
            return
         }
         
-        var detailViewController = segue.destination as! RepoDetailsViewController
+        let detailViewController = segue.destination as! RepoDetailsViewController
         detailViewController.setData(tableViewCellViewModel: preparedViewModel)
     }
 }
@@ -74,13 +74,13 @@ extension MainViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: viewModel.repoCellIdentifier) as! ReposTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: viewModel.repoCellIdentifier) as! ReposTableViewCell
         cell.setData(viewModel: viewModel.getRepoCellViewModel(for: indexPath))
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        var cellHeight = viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
+        let cellHeight = viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
         print("Cell height: \(cellHeight)")
         //return viewModel.getRepoCellViewModel(for: indexPath).repoCellSizes.repoCellHeight
         //return 250
@@ -133,8 +133,6 @@ extension MainViewController : UIScrollViewDelegate{
                 }
                 
                 self?.viewModel.fetchingData = false
-                
-                print("Now total repos count: \(self?.viewModel.numberOfRows())")
             }
         }
     }
@@ -143,7 +141,7 @@ extension MainViewController : UIScrollViewDelegate{
 extension MainViewController{
     
     private func createRefreshControl() -> UIRefreshControl{
-        var refreshControl = UIRefreshControl()
+        let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(onCalledToRefresh(sender:)), for: .valueChanged)
         
         return refreshControl
