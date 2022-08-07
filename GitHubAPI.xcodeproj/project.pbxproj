@@ -18,6 +18,7 @@
 		526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F4289C62EA008A35E5 /* RepoCellSizes.swift */; };
 		526196F7289D5BFB008A35E5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F6289D5BFB008A35E5 /* GradientView.swift */; };
 		526196F9289D7AA6008A35E5 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526196F8289D7AA6008A35E5 /* TitleView.swift */; };
+		5261977D28A02A9A008A35E5 /* TaskDesciption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5261977C28A02A9A008A35E5 /* TaskDesciption.swift */; };
 		5292548E2867A99100FF3B3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548D2867A99100FF3B3D /* AppDelegate.swift */; };
 		529254902867A99100FF3B3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5292548F2867A99100FF3B3D /* SceneDelegate.swift */; };
 		529254922867A99100FF3B3D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529254912867A99100FF3B3D /* MainViewController.swift */; };
@@ -43,6 +44,7 @@
 		526196F4289C62EA008A35E5 /* RepoCellSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCellSizes.swift; sourceTree = "<group>"; };
 		526196F6289D5BFB008A35E5 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		526196F8289D7AA6008A35E5 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		5261977C28A02A9A008A35E5 /* TaskDesciption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDesciption.swift; sourceTree = "<group>"; };
 		5292548A2867A99100FF3B3D /* GitHubAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5292548D2867A99100FF3B3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5292548F2867A99100FF3B3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,9 +119,10 @@
 		5292548C2867A99100FF3B3D /* GitHubAPI */ = {
 			isa = PBXGroup;
 			children = (
+				5261977C28A02A9A008A35E5 /* TaskDesciption.swift */,
+				52F84A0D288C37270061D223 /* Helpers */,
 				52F84A10288C4C590061D223 /* AppDelegates */,
 				52F84A11288C4C8C0061D223 /* Storyboards */,
-				52F84A0D288C37270061D223 /* Helpers */,
 				526196F3289C624A008A35E5 /* CustomViews */,
 				526196EA289C323A008A35E5 /* LayoutCalculations */,
 				52F849D1288BF96F0061D223 /* Model */,
@@ -266,6 +269,7 @@
 				52F84A1A288D58400061D223 /* RepoDetailsViewController.swift in Sources */,
 				526196F9289D7AA6008A35E5 /* TitleView.swift in Sources */,
 				525B7E99288EA4710099C11C /* TableViewCellViewModel.swift in Sources */,
+				5261977D28A02A9A008A35E5 /* TaskDesciption.swift in Sources */,
 				52F84A15288C4EA10061D223 /* ReposTableViewCell.swift in Sources */,
 				526196EE289C33DB008A35E5 /* RepoCellLayoutCalculator.swift in Sources */,
 				526196F5289C62EA008A35E5 /* RepoCellSizes.swift in Sources */,

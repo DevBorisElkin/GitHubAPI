@@ -37,8 +37,6 @@ class RepoDetailsViewController: UIViewController {
         webView.load(URLRequest(url: url))
     }
     
-    
-    
     public func setData(tableViewCellViewModel: TableViewCellViewModel){
         self.viewModel = tableViewCellViewModel
     }
