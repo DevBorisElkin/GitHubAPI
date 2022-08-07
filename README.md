@@ -1,6 +1,6 @@
 Тестовое задание взято из интернета.
 
-Link to a video preview:
+Video preview:
 https://www.youtube.com/watch?v=vcgBfQX9M6s
 _________________________________________________
  
