@@ -35,21 +35,23 @@ class MainViewController: UIViewController {
     func loadDataInitially(completion: (() -> ())?){
         NetworkingHelpers.decodeDataWithResult(from: viewModel.getGithubRepositoriesLink(), type: [Repository].self, printJSON: false) { [weak self] result in
             
-            switch result{
-            case .success(let repositories):
-                self?.viewModel.setRepositories(newRepos: repositories)
-                self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
-                print("Number of repos: \(repositories.count)")
-            case .failure(let error):
-                self?.viewModel.setRepositories(newRepos: [])
-                self?.viewModel.lastRepoLoadedId = 0
-                print("*Couldn't get data = failure: \(error.localizedDescription)")
-            }
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let repositories):
+                    self?.viewModel.setRepositories(newRepos: repositories)
+                    self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
+                    print("Number of repos: \(repositories.count)")
+                case .failure(let error):
+                    self?.viewModel.setRepositories(newRepos: [])
+                    self?.viewModel.lastRepoLoadedId = 0
+                    print("*Couldn't get data = failure: \(error.localizedDescription)")
+                }
 
-            self?.tableView.reloadData()
-            self?.viewModel.fetchingData = false
-            
-            completion?()
+                self?.tableView.reloadData()
+                self?.viewModel.fetchingData = false
+                
+                completion?()
+            }
         }
     }
     
@@ -112,18 +114,20 @@ extension MainViewController : UIScrollViewDelegate{
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
             NetworkingHelpers.decodeDataWithResult(from: self.viewModel.getGithubRepositoriesLink(previousRepoId: self.viewModel.lastRepoLoadedId), type: [Repository].self, printJSON: false){ [weak self] result in
                 
-                self?.tableView.tableFooterView = nil
-                
-                switch result{
-                case .success(let repositories):
-                    self?.viewModel.addNewRepositories(newRepos: repositories)
-                    self?.tableView.reloadData()
-                    self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
-                case .failure(let error):
-                    print("Unsuccessfully retrieved data. Error:\n\(error)")
+                DispatchQueue.main.async {
+                    self?.tableView.tableFooterView = nil
+                    
+                    switch result{
+                    case .success(let repositories):
+                        self?.viewModel.addNewRepositories(newRepos: repositories)
+                        self?.tableView.reloadData()
+                        self?.viewModel.lastRepoLoadedId = repositories.last?.id ?? 0
+                    case .failure(let error):
+                        print("Unsuccessfully retrieved data. Error:\n\(error)")
+                    }
+                    
+                    self?.viewModel.fetchingData = false
                 }
-                
-                self?.viewModel.fetchingData = false
             }
         }
     }

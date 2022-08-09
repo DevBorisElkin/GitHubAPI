@@ -20,7 +20,7 @@ public class NetworkingHelpers{
             }
         }
     }
-    
+    /// Completion is called on UI thread
     public static func loadDataFromURL(from url: String, printJSON: Bool, completion: @escaping (Data) -> ()){
         let task = URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
             guard let data = data, error == nil else {
@@ -42,7 +42,6 @@ public class NetworkingHelpers{
         task.resume()
     }
     // MARK: Example code - can either successfully return value or error
-    /// Completion is called on UI thread
     public static func decodeDataWithResult<T: Decodable>(from url: String, type: T.Type, printJSON: Bool, completion: @escaping (Result<T, Error>) -> ()){
         
         loadDataFromURLWithResult(from: url, printJSON: printJSON) { result in
@@ -66,9 +65,7 @@ public class NetworkingHelpers{
             guard let data = data, error == nil else {
                 print("\(#function) Couldn't load data from URL")
                 if let error = error {
-                    DispatchQueue.main.async{
-                        completion(.failure(error))
-                    }
+                    completion(.failure(error))
                 }
                 return
             }
@@ -77,12 +74,8 @@ public class NetworkingHelpers{
                 print("-----JSON Retrieved-----\n\(json)\n-----JSON Ended-----")
             }
             
-            DispatchQueue.main.async{
-                completion(.success(data))
-            }
+            completion(.success(data))
         }
         task.resume()
     }
-    
-    
 }
